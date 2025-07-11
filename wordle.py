@@ -1,3 +1,14 @@
+'''
+ANSI COLORS
+[0;30m 	Black
+[0;31m 	Red
+[0;32m 	Green
+[0;33m 	Yellow
+[0;34m 	Blue
+[0;35m 	Purple
+[0;36m 	Cyan
+[0;37m 	White
+'''
 import os
 import time
 import random
@@ -38,12 +49,12 @@ try:
             i = 0
             while i <= 4:
                 if word[i] == guess[i]:
-                    display_str += f"\033[92m{guess[i]}" #letter in correct place
+                    display_str += f"\033[32m{guess[i]}" #letter in correct place
                 else:
                     if isThere(guess[i], word) == True:
-                        display_str += f"\033[94m{guess[i]}" #letter in word
+                        display_str += f"\033[33m{guess[i]}" #letter in word
                     else:
-                        display_str += f"\033[91m{guess[i]}" #letter nowhere
+                        display_str += f"\033[31m{guess[i]}" #letter nowhere
                 i += 1
             
             print_array.append(display_str)
