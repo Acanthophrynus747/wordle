@@ -12,6 +12,7 @@ ANSI COLORS
 import os
 import time
 import random
+from termcolor import colored
 
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear') #clear either the linux or windows way or linux way
@@ -28,11 +29,52 @@ def isThere(char, word):
             return True
     return False
 
+def showKeyboard(not_present):
+
+    line_1 = "qwertyuiop"
+    line_2 = "asdfghjkl"
+    line_3 = "zxcvbnm"
+
+    letter_color = "white"
+    present_format = "on_green"
+    not_present_format = "on_red"
+
+    for i in line_1:
+        if i in not_present:
+            text = colored(i, letter_color, not_present_format)
+            print(text, end = "")
+        else:
+            text2 = colored(i,letter_color, present_format)
+            print(text2, end = "")
+
+    print("")
+
+    for i in line_2:
+        if i in not_present:
+            text = colored(i, letter_color, not_present_format)
+            print(text, end = "")
+        else:
+            text2 = colored(i,letter_color, present_format)
+            print(text2, end = "")
+
+    print("")
+    print(" ", end = "")
+
+    for i in line_3:
+        if i in not_present:
+            text = colored(i, letter_color, not_present_format)
+            print(text, end = "")
+        else:
+            text2 = colored(i,letter_color, present_format)
+            print(text2, end = "")
+    print("")
+
 try:
     while True:
         guess_array = []
         print_array = []
         word = randomWord()
+        letters_not_present = ""
 
         #print(word)
 
@@ -57,14 +99,17 @@ try:
                         display_str += f"\033[33m{guess[i]}" #letter in word
                     else:
                         display_str += f"\033[31m{guess[i]}" #letter nowhere
+                        letters_not_present += guess[i] #add to letters not present string
                 i += 1
             
             print_array.append(display_str)
 
             clear()
 
-            for i in print_array:
+            for i in print_array: #print out the wordle display
                 print(i)
+
+            showKeyboard(letters_not_present)
             
             if len(print_array) >= 6:
                 if guess != word:
