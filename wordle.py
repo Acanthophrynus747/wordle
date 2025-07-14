@@ -80,7 +80,7 @@ try:
 
         while True:
             
-            print("\033[37m_____")  
+            print("\033[37m  _____")  
             guess = input("\033[37mGuess a word: ")
             
             while len(guess) < 5: #avoid error if guess is too short
@@ -107,19 +107,20 @@ try:
             clear()
 
             for i in print_array: #print out the wordle display
+                print("  ", end = "")
                 print(i)
 
             showKeyboard(letters_not_present)
             
             if len(print_array) >= 6:
                 if guess != word:
-                    print(f"\033[37mYOU LOSE")
+                    print(f"\033[37m YOU LOSE")
                     time.sleep(1)
                     print(f"The word was: {word}")
                     break
                 else:
                     if guess == word:
-                        print(f"\033[37mYOU WIN")
+                        print(f"\033[37m YOU WIN")
                         time.sleep(1)
                         break
                     
