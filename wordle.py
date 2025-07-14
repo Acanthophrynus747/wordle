@@ -34,6 +34,8 @@ try:
         print_array = []
         word = randomWord()
 
+        #print(word)
+
         while True:
             
             print("\033[37m_____")  
@@ -65,20 +67,31 @@ try:
                 print(i)
             
             if len(print_array) >= 6:
-                print(f"\033[37mYOU LOSE")
-                time.sleep(1)
-                print(f"The word was: {word}")
-                break
-
+                if guess != word:
+                    print(f"\033[37mYOU LOSE")
+                    time.sleep(1)
+                    print(f"The word was: {word}")
+                    break
+                else:
+                    if guess == word:
+                        print(f"\033[37mYOU WIN")
+                        time.sleep(1)
+                        break
+                    
             if guess == word:
                 print(f"\033[37mYOU WIN")
                 time.sleep(1)
                 break
-        
-        input = input("enter any character to exit: ")
-        time.sleep(1)
-        clear()
-        exit()
+
+        if input("enter y to play again, or any other character to exit: ") == "y":
+            clear()
+            continue
+        else:
+            clear()
+            print("goodbye")
+            time.sleep(1)
+            clear()
+            exit()
             
 except KeyboardInterrupt:
     clear()
