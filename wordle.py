@@ -31,9 +31,9 @@ def isThere(char, word):
 
 def showKeyboard(not_present):
 
-    line_1 = "qwertyuiop"
-    line_2 = "asdfghjkl"
-    line_3 = "zxcvbnm"
+    line_1 = "QWERTYUIOP"
+    line_2 = "ASDFGHJKL"
+    line_3 = "ZXCVBNM"
 
     letter_color = "white"
     present_format = "on_green"
@@ -73,15 +73,15 @@ try:
     while True:
         guess_array = []
         print_array = []
-        word = randomWord()
+        word = str.upper(randomWord())
         letters_not_present = ""
 
-        #print(word)
+        print(word)
 
         while True:
             
             print("\033[37m  _____")  
-            guess = input("\033[37mGuess a word: ")
+            guess = str.upper(input("\033[37mGuess a word: "))
             
             while len(guess) < 5: #avoid error if guess is too short
                 guess += "_"
