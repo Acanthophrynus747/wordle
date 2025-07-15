@@ -1,14 +1,3 @@
-'''
-ANSI COLORS
-[0;30m 	Black
-[0;31m 	Red
-[0;32m 	Green
-[0;33m 	Yellow
-[0;34m 	Blue
-[0;35m 	Purple
-[0;36m 	Cyan
-[0;37m 	White
-'''
 import os
 import time
 import random
@@ -76,7 +65,7 @@ try:
         word = str.upper(randomWord())
         letters_not_present = ""
 
-        print(word)
+        #print(word)
 
         while True:
             
@@ -93,12 +82,12 @@ try:
             i = 0
             while i <= 4:
                 if word[i] == guess[i]:
-                    display_str += f"\033[32m{guess[i]}" #letter in correct place
+                    display_str += colored(guess[i], "green") #letter in correct place
                 else:
                     if isThere(guess[i], word) == True:
-                        display_str += f"\033[33m{guess[i]}" #letter in word
+                        display_str += colored(guess[i], "yellow") #letter in word
                     else:
-                        display_str += f"\033[31m{guess[i]}" #letter nowhere
+                        display_str += colored(guess[i], "red") #letter nowhere
                         letters_not_present += guess[i] #add to letters not present string
                 i += 1
             
@@ -114,18 +103,18 @@ try:
             
             if len(print_array) >= 6:
                 if guess != word:
-                    print(f"\033[37m YOU LOSE")
+                    print(" YOU LOSE")
                     time.sleep(1)
                     print(f"The word was: {word}")
                     break
                 else:
                     if guess == word:
-                        print(f"\033[37m YOU WIN")
+                        print(" YOU WIN")
                         time.sleep(1)
                         break
                     
             if guess == word:
-                print(f"\033[37mYOU WIN")
+                print(" YOU WIN")
                 time.sleep(1)
                 break
 
